@@ -19,18 +19,18 @@ var getHtmlConfig=function (name) {
 var config ={
     entry:{
         'common':['./src/page/common/index.js'],
-        'index':['./src/page/index/index.js'],
-        'login':['./src/page/login/index.js']
+        'index' :['./src/page/index/index.js'],
+        'login' :['./src/page/login/index.js']
     },
     //输出配置
     output: {
-        path: './dist',
+        path      : './dist',
         publicPath:'/dist',
-        filename: 'js/[name].js'
+        filename  : 'js/[name].js'
     },
     //全局模块设置
     externals:{
-        'jquery':'window.jQuery'
+        'jquery':'window.$'
     },
     //css 单独打包
     module:{
@@ -39,11 +39,21 @@ var config ={
             {test:/\.(png|jpg|gif|ttf|woff|svg|eot)\??.*$/,loader:'url-loader?limit=100&name=resource/[name].[ext]'},
         ]
     },
+
+    resolve:{
+        alias:{
+            node_modules   : __dirname +'/node_modules',
+            util           : __dirname +'/src/util',
+            page           : __dirname +'/src/page',
+            service        : __dirname +'/src/service',
+            view           : __dirname +'/src/view',
+        }
+    },
     //通用模块儿配置
     plugins:[
         //通用模块设置,到js/base.js
         new webpack.optimize.CommonsChunkPlugin({
-            name :'common',
+            name    :'common',
             filename:'js/base.js'
         }),
         //转换loader，实现css单独配置

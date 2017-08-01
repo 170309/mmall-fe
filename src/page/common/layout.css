@@ -1,0 +1,99 @@
+
+/*CSS reset ,去除默认样式*/
+body{
+    background: #f6f6f6;
+    font:12px/1.5 tahoma,arial,Micsoft Yahei,sans-serif;
+}
+
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+img{
+    display: block;
+    border:none;
+}
+li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+    cursor: pointer;
+}
+label{
+    cursor: pointer;
+}
+
+input[type='checkbox']{
+    cursor: pointer;
+}
+
+
+/*定宽样式*/
+.w{
+    width: 1080px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+/*全局样式*/
+
+.hide{
+    display: none;
+}
+
+/*超链*/
+.link{
+    color:#999999;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.link:hover{
+    color: #880011;
+}
+
+.link-text{
+    color: #999;
+    text-decoration: none;
+}
+
+/*btn*/
+.btn{
+    display: inline-block;
+    padding: 0 20px;
+    height: 30px;
+    line-height: 40px;
+    vertical-align: middle;
+    border: none;
+    background: #c60023;
+    font-size: 17px;
+    font-weight:bold;
+    color: #fff;
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn btn-mini{
+    height: 25px;
+    line-height: 25px;
+    font-size: 12px;
+    padding: 0 10px;
+}
+
+/*loading css*/
+.loading{
+    margin: 10px auto;
+    border:1px solid #f6f6f6;
+    border-radius: 5px;
+    display: block;
+    width: 65px;
+    height: 65px;
+    opacity: .5;
+    background: url(../../image/icon/loading.gif) no-repeat;
+}
+
+

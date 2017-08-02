@@ -38,7 +38,7 @@ var _mm = {
         return result ? decodeURIComponent(result[2]) : null;
     },
     doLogin:function () {
-        window.location.href = './user-login.html?redirect='+encodeURIComponent(window.location.href);
+        window.location.href = './login.html?redirect='+encodeURIComponent(window.location.href);
     },
     //渲染HTML模板
     renderHtml:function (htmltemple,data) {

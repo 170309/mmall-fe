@@ -3,11 +3,13 @@
     background: #fff;
     padding: 10px 20px;
     margin-top: 20px;
-    -ms-text-align-last: right;
+    /*-ms-text-align-last: right;*/
     text-align: center;
+    min-height: 500px;
 }
 
 .result-con{
+    margin-top: 205px;
     display: none;
 }
 .result-con .result-title{

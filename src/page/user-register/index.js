@@ -23,6 +23,9 @@ var page = {
         var _this = this;
         $('#username').blur(function () {
             var username = $.trim($(this).val());
+            if(!username){
+                return ;
+            }
             _user.checkUsername(username,function (res) {
                 formError.show('用户名:'+username+'可用');
             },function (err) {
@@ -56,7 +59,7 @@ var page = {
         var validata = this.formValidata(formData);
         if (validata.status) {
             _user.register(formData, function (res) {
-                window.location.href = _mm.getUrlParam('redirect') || './index.html';
+                window.location.href = './result.html?type=register';
             }, function (errMsg) {
                 formError.show(errMsg);
             })

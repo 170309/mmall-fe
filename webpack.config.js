@@ -20,7 +20,7 @@ var config = {
     entry: {
         'common': ['./src/page/common/index.js'],
         'index': ['./src/page/index/index.js'],
-        'login': ['./src/page/login/index.js'],
+        'user-login': ['./src/page/user-login/index.js'],
         'result': ['./src/page/result/index.js']
     },
     //输出配置
@@ -62,7 +62,7 @@ var config = {
         new ExtractTextPlugin("css/[name].css"),
         //
         new HtmlWebpackPligin(getHtmlConfig('index', '首页')),
-        new HtmlWebpackPligin(getHtmlConfig('login', '用户登录')),
+        new HtmlWebpackPligin(getHtmlConfig('user-login', '用户登录')),
         new HtmlWebpackPligin(getHtmlConfig('result', '结果显示'))
     ]
 

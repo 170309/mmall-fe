@@ -28,6 +28,12 @@ label{
 input[type='checkbox']{
     cursor: pointer;
 }
+input[type='text']{
+    outline:none;
+}
+input[type='password']{
+    outline:none;
+}
 
 
 /*定宽样式*/
@@ -66,7 +72,7 @@ input[type='checkbox']{
     display: inline-block;
     padding: 0 20px;
     height: 30px;
-    line-height: 40px;
+    line-height: 30px;
     vertical-align: middle;
     border: none;
     background: #c60023;
@@ -76,6 +82,10 @@ input[type='checkbox']{
     outline: none;
     cursor: pointer;
     text-decoration: none;
+    border-radius: 0px;
+}
+.btn:hover{
+    color: #ffffff;
 }
 
 .btn btn-mini{

@@ -23,7 +23,7 @@
     width: 550px;
     height: 40px;
     line-height: 40px;
-    padding:10px 20px;
+    padding:0px 20px;
     outline: none;
     border:2px solid #c60023;
     font-size: 15px;
@@ -31,7 +31,7 @@
 
 .header .search-con .search-btn{
     position: absolute;
-    height: 40px;
+    height: 44px;
     width: 80px;
     border-radius: 0;
 }

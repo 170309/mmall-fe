@@ -20,8 +20,9 @@ var config = {
     entry: {
         'common': ['./src/page/common/index.js'],
         'index': ['./src/page/index/index.js'],
+        'result': ['./src/page/result/index.js'],
         'user-login': ['./src/page/user-login/index.js'],
-        'result': ['./src/page/result/index.js']
+        'user-register': ['./src/page/user-register/index.js']
     },
     //输出配置
     output: {
@@ -63,7 +64,8 @@ var config = {
         //
         new HtmlWebpackPligin(getHtmlConfig('index', '首页')),
         new HtmlWebpackPligin(getHtmlConfig('user-login', '用户登录')),
-        new HtmlWebpackPligin(getHtmlConfig('result', '结果显示'))
+        new HtmlWebpackPligin(getHtmlConfig('result', '结果显示')),
+        new HtmlWebpackPligin(getHtmlConfig('user-register', '用户注册'))
     ]
 
 }

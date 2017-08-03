@@ -12,6 +12,29 @@ var _user = {
         })
 
     },
+    register: function (userInfo, resolve, reject) {
+        _mm.request({
+            url: _mm.getURL('/user/logout.do'),
+            type: 'post',
+            data: userInfo,
+            success: resolve,
+            error: reject
+        })
+
+    },
+    checkUsername: function (username, resolve, reject) {
+        _mm.request({
+            url: _mm.getURL('/user/logout.do'),
+            type: 'post',
+            data: {
+                str: username,
+                type:'username'
+            },
+            success: resolve,
+            error: reject
+        })
+
+    },
     login: function (userinfo, resolve, reject) {
         _mm.request({
             url: _mm.getURL('/user/login.do'),

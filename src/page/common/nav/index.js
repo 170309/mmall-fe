@@ -19,7 +19,7 @@ var nav = {
         });
         //注册事件绑定
         $('.js-register').click(function () {
-            window.location.href = './register.html';
+            window.location.href = './user-register.html';
         });
         //退出事件绑定，请求server清除session
         $('.js-loginout').click(function () {

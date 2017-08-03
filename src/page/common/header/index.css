@@ -35,7 +35,11 @@
     width: 80px;
     border-radius: 0;
 }
-/*.header .search-con .search-btn:hover{*/
-    /*outline: none;*/
-    /*color: #fff;*/
-/*}*/
+.header .search-con .search-btn:active{
+    outline: none;
+    color: #fff;
+}
+.header .search-con .search-btn:hover{
+    outline: none;
+    color: #fff;
+}

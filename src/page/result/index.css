@@ -1,0 +1,29 @@
+
+.page-wrap{
+    background: #fff;
+    padding: 10px 20px;
+    margin-top: 20px;
+    -ms-text-align-last: right;
+    text-align: center;
+}
+
+.result-con{
+    display: none;
+}
+.result-con .result-title{
+    color: #555;
+}
+.result-con .result-content{
+    margin: 30px 0;
+}
+.result-con .result-content .link{
+    border:1px solid #ccc;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 4px 20px ;
+
+}
+
+.result-con .result-content .link:hover{
+    color: #999;
+}

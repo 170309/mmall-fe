@@ -21,6 +21,9 @@ var nav = {
         $('.js-register').click(function () {
             window.location.href = './user-register.html';
         });
+        $('.logo').click(function () {
+            window.location.href='./index.html';
+        });
         //退出事件绑定，请求server清除session
         $('.js-loginout').click(function () {
             _user.logout(

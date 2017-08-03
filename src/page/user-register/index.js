@@ -33,6 +33,9 @@ var page = {
         $('.btn-submit').click(function () {
             _this.submit();
         });
+        $('.logo').click(function () {
+            window.location.href='./index.html';
+        });
         //回车事件绑定
         $('.user-content').keyup(function (e) {
             if (e.keyCode === 13) {

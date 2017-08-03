@@ -57,7 +57,7 @@ var config = {
         //通用模块设置,到js/base.js
         new webpack.optimize.CommonsChunkPlugin({
             name: 'common',
-            filename: 'js/base.js'
+            filename: 'js/common.js'
         }),
         //转换loader，实现css单独配置
         new ExtractTextPlugin("css/[name].css"),

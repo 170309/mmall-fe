@@ -10,12 +10,11 @@ require('page/common/header/index.js');
 var navSide = require('page/common/nav-side/index.js');
 var _user = require('service/user-service.js');
 var _mm = require('util/mm.js');
-var templete = require('./index.string');
 
 var page = {
     init:function () {
         navSide.init({
-            name:'user-center'
+            name:'pass-update'
         });
         this.onLoad();
         this.bindEvent();
@@ -25,15 +24,16 @@ var page = {
         //所以启用了一个全局的事件监听，来扑捉#save-userinfo的click事件
         $(document).on('click','#save-userinfo',function () {
             var userinfo = {
-                username :$.trim($('#username').val()),
-                phone :$.trim($('#phone').val()),
-                email :$.trim($('#email').val()),
-                question :$.trim($('#question').val()),
-                answer :$.trim($('#answer').val())
+                password :$.trim($('#password').val()),
+                passwordNew :$.trim($('#password-new').val()),
+                passwordConfim :$.trim($('#password-confim').val())
             };
             var validataResult = this.formValidata(userinfo);
             if(validataResult){
-                _mm.updateUserInfo(userinfo,function (res,msg) {
+                _mm.updateUserInfo({
+                    passwordOld:userinfo.password,
+                    passwordNew:userinfo.passwordNew
+                },function (res,msg) {
                     _mm.successTips(msg);
                     window.location.href="./user-center.html";
                 },function (err) {
@@ -44,28 +44,24 @@ var page = {
             }
         })
     },
-    onLoad:function () {
-        var userhtml = '';
-        _user.getUserInfo(function (res) {
-            userhtml =  _mm.renderHtml(templete,res);
-            $('.panel-body').html(userhtml);
-        },function (err) {
-            _mm.errorTips(err)
-        });
-    },
     formValidata: function (formData) {
         var result = {
             status: false,
             msg: ''
         };
 
-        if (!_mm.validata(formData.email, 'email')) {
-            result.msg = 'email格式不对';
+        if (!_mm.validata(formData.passwordOld, 'require')) {
+            result.msg = '原密码不能为空';
             return result;
         }
 
-        if (!_mm.validata(formData.phone, 'phone')) {
-            result.msg = '电话号码格式不对';
+        if (!formData.passwordNew || formData.passwordNew.length >= 5) {
+            result.msg = '请输入大于6位的密码';
+            return result;
+        }
+
+        if (formData.passwordNew !== formData.passwordConfim) {
+            result.msg = '两次输入的密码不一致';
             return result;
         }
 

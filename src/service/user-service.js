@@ -82,6 +82,22 @@ var _user = {
             success: resolve,
             error: reject
         })
+    },
+    getUserInfo:function (resolve,reject) {
+        _mm.request({
+            url: _mm.getURL('/user/get_information.do'),
+            type: 'post',
+            success: resolve,
+            error: reject
+        })
+    },
+    updateUserInfo:function (userInfo,resolve,reject) {
+        _mm.request({
+            url: _mm.getURL('/user/update_information.do'),
+            type: 'post',
+            success: resolve,
+            error: reject
+        })
     }
 };
 

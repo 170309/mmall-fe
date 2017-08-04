@@ -1,5 +1,7 @@
 /*通用头部导航*/
-
+.header{
+    background: #fff;
+}
 .header .logo{
     position: absolute;
     top:35px;
@@ -43,3 +45,36 @@
     outline: none;
     color: #fff;
 }
+
+
+
+/*panel*/
+.panel{
+    padding: 10px;
+    margin-bottom: 10px;
+    background: #ffffff;
+    float: left;
+    width: 100%;
+}
+
+.panel .panel-title{
+    padding: 10px;
+    font-weight: bold;
+    font-size: 18px;
+    color: #666;
+    border-bottom: 1px solid #eee;
+}
+
+
+.panel .panel-body{
+    padding: 10px;
+    overflow: hidden;
+}
+
+
+
+
+
+
+
+

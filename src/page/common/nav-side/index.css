@@ -3,15 +3,17 @@
     width: 130px;
     float: left;
     min-height:100px;
+    margin-top: 20px;
 }
 
 .content.with-nav{
     float: left;
     width:950px;
+    margin-top: 25px;
 }
 
 .nav-side .nav-item{
-    line-height: 25px;
+    line-height: 30px;
     font-size: 13px;
 }
 .nav-side .nav-item.active .link{

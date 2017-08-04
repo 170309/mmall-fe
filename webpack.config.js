@@ -22,7 +22,8 @@ var config = {
         'index': ['./src/page/index/index.js'],
         'result': ['./src/page/result/index.js'],
         'user-login': ['./src/page/user-login/index.js'],
-        'user-register': ['./src/page/user-register/index.js']
+        'user-register': ['./src/page/user-register/index.js'],
+        'user-pass-reset': ['./src/page/user-pass-reset/index.js']
     },
     //输出配置
     output: {
@@ -65,6 +66,7 @@ var config = {
         new HtmlWebpackPligin(getHtmlConfig('index', '首页')),
         new HtmlWebpackPligin(getHtmlConfig('user-login', '用户登录')),
         new HtmlWebpackPligin(getHtmlConfig('result', '结果显示')),
+        new HtmlWebpackPligin(getHtmlConfig('user-pass-reset', '找回密码')),
         new HtmlWebpackPligin(getHtmlConfig('user-register', '用户注册'))
     ]
 

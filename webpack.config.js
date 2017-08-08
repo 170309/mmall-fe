@@ -43,7 +43,8 @@ var config = {
         loaders: [
             {test: /\.css$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader")},
             {test: /\.string$/, loader: 'html-loader'},
-            {test: /\.(png|jpg|gif|ttf|woff|svg|eot)\??.*$/, loader: 'url-loader?limit=100&name=resource/[name].[ext]'},
+            {test: /\.(png|jpg|gif)\??.*$/, loader: 'url-loader?limit=100&name=resource/image/[name].[ext]'},
+            {test: /\.(ttf|woff|svg|eot)\??.*$/, loader: 'url-loader?limit=100&name=resource/fonts/[name].[ext]'},
         ]
     },
 

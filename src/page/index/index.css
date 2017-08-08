@@ -1,3 +1,153 @@
-body{
-    background: #eee;
+/*keyword-list css*/
+.keyword-list {
+    float: left;
+    padding: 10px 0;
+    width: 240px;
+    background: #666666;
+    height: 350px;
+    color: #666;
+    margin-right: 10px;
 }
+
+.keyword-list .keyword-item {
+    padding-left: 20px;
+    height: 35px;
+    line-height: 35px;
+    font-size: 14px;
+}
+
+.keyword-list .keyword-item:hover {
+    background: rgba(0,0,0,.2);
+    color: #666;
+}
+
+.keyword-list .keyword-item .link {
+    color: #ffffff;
+    margin-right: 5px;
+}
+
+.keyword-list .keyword-item .link:hover {
+    /*color: #c60023;*/
+    color: #fff;
+    font-size: 1.1em;
+}
+
+/*banner-con*/
+.banner-con {
+    width: 830px;
+    float: left;
+    height: 370px;
+    background: #eeeeee;
+}
+
+.banner-con .loading {
+    margin-top: 141px;
+}
+
+.banner-img{
+    width:100%;
+    height: 370px;
+}
+/*floor*/
+
+.floor-wrap .floor-title {
+    height: 50px;
+    line-height: 50px;
+    color: #d58717;
+    font-weight: normal;
+    font-size: 20px;
+    border-bottom: 1px solid #d58717;
+}
+.floor-wrap:nth-child(2) .floor-title{
+    color: #3b838c;
+    border-bottom: 1px solid #3b838c;
+}
+.floor-wrap:nth-child(3) .floor-title{
+    color: #a93931;
+    border-bottom: 1px solid #a93931;
+}
+.floor-wrap:nth-child(4) .floor-title{
+    color: #488bad;
+    border-bottom: 1px solid #488bad;
+}
+.floor-wrap:nth-child(5) .floor-title{
+    color: #642663;
+    border-bottom: 1px solid #642663;
+}
+
+.floor-wrap .floor-list {
+    overflow: hidden;
+    margin-right: -20px;
+}
+
+.floor-wrap .floor-list .floor-item {
+    position: relative;
+    width: 200px;
+    height: 220px;
+    margin: 15px 20px 15px 0;
+    float: left;
+    background: #ffffff;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px #eeeeee;
+    opacity: .8;
+
+}
+
+.floor-wrap .floor-list .floor-item:hover {
+    box-shadow: 3px 4px 2px #ccc;
+    -webkit-transform: translateY(-5px);
+    -moz-transform: translateY(-5px);
+    -ms-transform: translateY(-5px);
+    -o-transform: translateY(-5px);
+    transform: translateY(-5px);
+    -webkit-transition: transform 0.5s;
+    -moz-transition: transform 0.5s;
+    -ms-transition: transform 0.5s;
+    -o-transition: transform 0.5s;
+    transition: transform 0.5s;
+    opacity: 1;
+
+}
+
+.floor-wrap .floor-list .floor-item .floor-text {
+    position: absolute;
+    top: 12px;
+    left: 20px;
+    font-size: 16px;
+    color: #555;
+}
+
+.floor-wrap .floor-list .floor-item .floor-img {
+    position: absolute;
+    right: 15px;
+    bottom: 10px;
+    width: 80%;
+    height: 75%;
+    border: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

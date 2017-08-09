@@ -1,4 +1,5 @@
 .unslider {
+    position: relative;
     overflow: auto;
     margin: 0;
     padding: 0
@@ -50,10 +51,32 @@
     z-index: 2;
     cursor: pointer
 }
-
+.unslider .icon{
+    width: 30px;
+    text-align: center;
+    font-size: 24px;
+    color: rgba(255,255,255,.8);
+    height: 40px;
+    line-height: 40px;
+    display: block;
+    background: rgba(255,255,255,.4);
+    border-radius: 3px;
+}
+.unslider .icon:hover {
+    -webkit-box-shadow: 2px 2px 2px  rgba(0, 0, 0, 0.2) inset;
+    -moz-box-shadow:    2px 2px 2px  rgba(0, 0, 0, 0.2) inset;
+    box-shadow:         2px 2px 2px  rgba(0, 0, 0, 0.2) inset;
+}
 .unslider-arrow.next {
+
     left: auto;
-    right: 20px
+    right: 30px;
+    top:175px;
+}
+
+.unslider-arrow.prev{
+    left: 30px;
+    top: 175px;
 }
 
 /**
@@ -69,6 +92,14 @@
  *   CSS and include that instead to use some of that
  *   hardware-accelerated goodness.
  */
+
+.unslider-nav{
+    position: absolute;
+    bottom: 10px;
+    left:50%;
+    margin-left: -45px;
+
+}
 .unslider-nav ol {
     list-style: none;
     text-align: center;

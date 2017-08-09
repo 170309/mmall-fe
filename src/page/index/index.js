@@ -141,7 +141,10 @@ var render = {
         this.renderBannerCon(data);
         $('.automatic-slider').unslider({
             autoplay: true,
-            dots:true
+            arrows: {
+                prev: '<a class="unslider-arrow prev icon"><i class="fa fa-chevron-left "></i></a>',
+                next: '<a class="unslider-arrow next icon"><i class="fa fa-chevron-right"></i></a>'
+            },
         });
     },
     renderBannerCon:function (data) {
@@ -150,7 +153,7 @@ var render = {
             html_ += ' <li> <a href="./list.html?cetegoryId='+ data.cId[i]+'"><img class="banner-img" src="'+ data.img[i]+'" alt=""></a> </li>';
         }
         html_ += '</ul></div>';
-        $(html_).appendTo($('.automatic-slider'));
+        $(html_).appendTo($('.banner-slider'));
     }
 
 };

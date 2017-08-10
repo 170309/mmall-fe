@@ -1,0 +1,30 @@
+.pg-con{
+    text-align: center;
+    color: #333333;
+}
+
+.pg-con .pg-item{
+    display: inline;
+    height: 36px;
+    padding: 0 15px;
+    margin:0 2px;
+    border: 1px solid #ccc;
+    background: #eee;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.pg-con .pg-item.disabled{
+    color: #cccccc;
+    background: none;
+    cursor: auto;
+}
+.pg-con .pg-item.active{
+    border:1px solid #f6f6f6;
+    background: none;
+    cursor: pointer;
+}
+

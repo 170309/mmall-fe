@@ -6,6 +6,7 @@ var header = {
 
     init: function () {
         this.bindEvent();
+        this.onLoad();
     },
     //事件绑定
     bindEvent: function () {
@@ -34,7 +35,6 @@ var header = {
     },
     //关键字回填
     onLoad: function () {
-
         var keyword = _mm.getUrlParam('keyword');
         if (keyword) {
             $('#search-input').val(keyword);

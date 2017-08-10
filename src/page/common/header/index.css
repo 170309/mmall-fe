@@ -72,6 +72,22 @@
 }
 
 
+/*面包屑导航*/
+.crumb{
+    background: #ddd;
+    border-top: 2px solid #c60023;
+}
+
+.crumb .crumb-body{
+    height: 45px;
+    line-height: 45px;
+    font-size: 14px;
+    color: #999;
+}
+
+.crumb .link{
+    color: #999;
+}
 
 
 

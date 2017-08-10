@@ -51,7 +51,7 @@ var _mm = {
         console.log(msg || '操作成功');
     },
     errorTips: function (msg) {
-        console.log('是不是出什么错了');
+        console.log( msg ||'是不是出什么错了');
     },
     //验证输入的字符串是否符合规范，支持非空验证
     validata: function (value, type) {

@@ -20,7 +20,9 @@ var config = {
     entry: {
         'common': ['./src/page/common/index.js'],
         'index': ['./src/page/index/index.js'],
+        'list': ['./src/page/list/index.js'],
         'result': ['./src/page/result/index.js'],
+        'detail': ['./src/page/detail/index.js'],
         'user-login': ['./src/page/user-login/index.js'],
         'user-register': ['./src/page/user-register/index.js'],
         'user-center': ['./src/page/user-center/index.js'],
@@ -68,7 +70,9 @@ var config = {
         new ExtractTextPlugin("css/[name].css"),
         //
         new HtmlWebpackPligin(getHtmlConfig('index', '首页')),
+        new HtmlWebpackPligin(getHtmlConfig('list', '商品列表页')),
         new HtmlWebpackPligin(getHtmlConfig('user-login', '用户登录')),
+        new HtmlWebpackPligin(getHtmlConfig('detail', '商品详情页')),
         new HtmlWebpackPligin(getHtmlConfig('result', '结果显示')),
         new HtmlWebpackPligin(getHtmlConfig('user-pass-reset', '找回密码')),
         new HtmlWebpackPligin(getHtmlConfig('user-center', '个人信息')),

@@ -1,93 +1,88 @@
-'use strict'
+/*
+* @Author: Rosen
+* @Date:   2017-05-08 22:26:19
+* @Last Modified by:   Rosen
+* @Last Modified time: 2017-05-21 22:36:14
+*/
+
+'use strict';
 require('./index.css');
+require('page/common/nav-simple/index.js');
+var _user   = require('service/user-service.js');
+var _mm     = require('util/mm.js');
 
-require('page/common/layout.css');
-require('page/common/nav-simple/index.css');
-var _mm = require('util/mm.js');
-var _user = require('service/user-service.js');
-
+// 表单里的错误提示
 var formError = {
-    show: function (errMsg) {
-        $('.error-item').show().find('.error-msg').text(errMsg)
+    show : function(errMsg){
+        $('.error-item').show().find('.err-msg').text(errMsg);
     },
-    hide: function (errMsg) {
-        $('.error-item').hide().find('.error-msg').text('')
-    },
+    hide : function(){
+        $('.error-item').hide().find('.err-msg').text('');
+    }
 };
 
+// page 逻辑部分
 var page = {
-    init: function () {
+    init: function(){
         this.bindEvent();
     },
-    bindEvent: function () {
+    bindEvent : function(){
         var _this = this;
-        //点击事件绑定
-        $('.btn-submit').click(function () {
+        // 登录按钮的点击
+        $('#submit').click(function(){
             _this.submit();
         });
-        $('.logo').click(function () {
-            window.location.href='./index.html';
-        });
-        //回车事件绑定
-        $('.user-content').keyup(function (e) {
-            if (e.keyCode === 13) {
+        // 如果按下回车，也进行提交
+        $('.user-content').keyup(function(e){
+            // keyCode == 13 表示回车键
+            if(e.keyCode === 13){
                 _this.submit();
             }
-        })
+        });
     },
-    submit: function () {
+    // 提交表单
+    submit : function(){
         var formData = {
-            username: $.trim($('#username').val()),
-            password: $.trim($('#password').val())
-        };
-        var validata = this.formValidata(formData);
-        if (validata.status) {
-            _user.login(formData, function (res) {
+                username : $.trim($('#username').val()),
+                password : $.trim($('#password').val())
+            },
+            // 表单验证结果
+            validateResult = this.formValidate(formData);
+        // 验证成功
+        if(validateResult.status){
+            _user.login(formData, function(res){
                 window.location.href = _mm.getUrlParam('redirect') || './index.html';
-            }, function (errMsg) {
+            }, function(errMsg){
                 formError.show(errMsg);
-            })
-        } else {
-            formError.show(validata.msg);
+            });
+        }
+        // 验证失败
+        else{
+            // 错误提示
+            formError.show(validateResult.msg);
         }
 
     },
-
-    formValidata: function (formData) {
+    // 表单字段的验证
+    formValidate : function(formData){
         var result = {
-            status: false,
-            msg: ''
+            status  : false,
+            msg     : ''
         };
-
-        if (!_mm.validata(formData.username, 'require')) {
+        if(!_mm.validate(formData.username, 'require')){
             result.msg = '用户名不能为空';
             return result;
         }
-
-        if (!_mm.validata(formData.username, 'username')) {
-            result.msg = '用户名不符合要求，请输入5位以上用户名';
-            return result;
-        }
-
-        if (!_mm.validata(formData.password, 'password')) {
-            result.msg = '用户名不符合要求，请输入5位以上密码';
-            return result;
-        }
-
-        if (!_mm.validata(formData.password, 'require')) {
+        if(!_mm.validate(formData.password, 'require')){
             result.msg = '密码不能为空';
             return result;
         }
-
-        result.status = true;
-        result.msg = '验证通过';
+        // 通过验证，返回正确提示
+        result.status   = true;
+        result.msg      = '验证通过';
         return result;
     }
-
 };
-
-$(function () {
+$(function(){
     page.init();
 });
-
-

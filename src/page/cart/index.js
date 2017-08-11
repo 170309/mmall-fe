@@ -1,97 +1,105 @@
-/**
- * Created by lucifer on 17-8-9.
- */
+/*
+* @Author: Rosen
+* @Date:   2017-05-30 16:51:25
+* @Last Modified by:   Rosen
+* @Last Modified time: 2017-06-05 20:58:39
+*/
+
 'use strict';
 require('./index.css');
-require('page/common/nav/index.js');
 require('page/common/header/index.js');
-
-var _mm = require('util/mm.js');
-var _produce = require('service/product-service.js');
-var _cart = require('service/cart-service.js');
-
-var templete = require('./index.string');
-
+var nav             = require('page/common/nav/index.js');
+var _mm             = require('util/mm.js');
+var _cart           = require('service/cart-service.js');
+var templateIndex   = require('./index.string');
 
 var page = {
-    data: {
-        cartInfo: ''
+    data : {
+        
     },
-    init: function () {
+    init : function(){
         this.onLoad();
         this.bindEvent();
     },
-    bindEvent: function () {
+    onLoad : function(){
+        this.loadCart();
+    },
+    bindEvent : function(){
         var _this = this;
-        // 排序事件
-        $(document).on('click', '.cart-select', function () {
-            var $this = $(this);
-            productid = $this.parent('.cart-table').data('product-id');
-            //选中
-            if ($this.is(':checked')) {
-                _cart.selectProduct(productid, function (res) {
-                    _this.renderCart(res);
-                }, function (err) {
-                    _mm.errorTips(err);
-                })
-            } else {
-                _cart.unSelectProduct(productid, function (res) {
-                    _this.renderCart(res);
-                }, function (err) {
-                    _mm.errorTips(err);
-                })
-            }
-        });
-        $(document).on('click', '.cart-select-all', function () {
-            var $this = $(this);
-            //选中
-            if ($this.is(':checked')) {
-                _cart.selectAllProduct(function (res) {
-                    _this.renderCart(res);
-                }, function (err) {
-                    _mm.errorTips(err);
-                })
-            } else {
-                _cart.unSelectAllProduct(function (res) {
-                    _this.renderCart(res);
-                }, function (err) {
-                    _mm.errorTips(err);
-                })
-            }
-        });
-        $(document).on('click', '.count-btn', function () {
+        // 商品的选择 / 取消选择
+        $(document).on('click', '.cart-select', function(){
             var $this = $(this),
-                $pcount = $this.siblings('.count-input'),
-                type = $this.hasClass('plus') ? 'plus' : 'minus',
-                productId = $this.parents('.cart-table').data('product-id'),
-                currcount = parseInt($pcount.val()),
-                mincount = 1,
-                maxcount = parseInt($pcount.data('max')),
-                newcount = 0;
-
-            if (type === 'plus') {
-                if (currcount >= maxcount) {
+                productId = $this.parents('.cart-table').data('product-id');
+            // 选中
+            if($this.is(':checked')){
+                _cart.selectProduct(productId, function(res){
+                    _this.renderCart(res);
+                }, function(errMsg){
+                    _this.showCartError();
+                });
+            }
+            // 取消选中
+            else{
+                _cart.unselectProduct(productId, function(res){
+                    _this.renderCart(res);
+                }, function(errMsg){
+                    _this.showCartError();
+                });
+            }
+        });
+        // 商品的全选 / 取消全选
+        $(document).on('click', '.cart-select-all', function(){
+            var $this = $(this);
+            // 全选
+            if($this.is(':checked')){
+                _cart.selectAllProduct(function(res){
+                    _this.renderCart(res);
+                }, function(errMsg){
+                    _this.showCartError();
+                });
+            }
+            // 取消全选
+            else{
+                _cart.unselectAllProduct(function(res){
+                    _this.renderCart(res);
+                }, function(errMsg){
+                    _this.showCartError();
+                });
+            }
+        });
+        // 商品数量的变化
+        $(document).on('click', '.count-btn', function(){
+            var $this       = $(this),
+                $pCount     = $this.siblings('.count-input'),
+                currCount   = parseInt($pCount.val()),
+                type        = $this.hasClass('plus') ? 'plus' : 'minus',
+                productId   = $this.parents('.cart-table').data('product-id'),
+                minCount    = 1,
+                maxCount    = parseInt($pCount.data('max')),
+                newCount    = 0;
+            if(type === 'plus'){
+                if(currCount >= maxCount){
                     _mm.errorTips('该商品数量已达到上限');
                     return;
                 }
-                newcount = currcount +1;
+                newCount = currCount + 1;
             }else if(type === 'minus'){
-                if (currcount <= mincount) {
+                if(currCount <= minCount){
                     return;
                 }
-                newcount = currcount -1;
+                newCount = currCount - 1;
             }
-
+            // 更新购物车商品数量
             _cart.updateProduct({
-                productId:productId,
-                count:newcount
-            },function (res) {
+                productId : productId,
+                count : newCount
+            }, function(res){
                 _this.renderCart(res);
-            },function (err) {
-                _this.showCartErrors(err);
-            })
+            }, function(errMsg){
+                _this.showCartError();
+            });
         });
-
+        // 删除单个商品
         $(document).on('click', '.cart-delete', function(){
             if(window.confirm('确认要删除该商品？')){
                 var productId = $(this).parents('.cart-table')
@@ -113,8 +121,8 @@ var page = {
                     _this.deleteCartProduct(arrProductIds.join(','));
                 }
                 else{
-                    _this.showCartError();
-                }
+                    _mm.errorTips('您还没有选中要删除的商品');
+                }  
             }
         });
         // 提交购物车
@@ -126,7 +134,27 @@ var page = {
                 _mm.errorTips('请选择商品后再提交');
             }
         });
-
+    },
+    // 加载购物车信息
+    loadCart : function(){
+        var _this       = this;
+        // 获取购物车列表
+        _cart.getCartList(function(res){
+            _this.renderCart(res);
+        }, function(errMsg){
+            _this.showCartError();
+        })
+    },
+    // 渲染购物车
+    renderCart : function(data){
+        this.filter(data);
+        // 缓存购物车信息
+        this.data.cartInfo = data;
+        // 生成HTML
+        var cartHtml = _mm.renderHtml(templateIndex, data);
+        $('.page-wrap').html(cartHtml);
+        // 通知导航的购物车更新数量
+        nav.loadCartCount();
     },
     // 删除指定商品，支持批量，productId用逗号分割
     deleteCartProduct : function(productIds){
@@ -137,37 +165,15 @@ var page = {
             _this.showCartError();
         });
     },
-    onLoad: function () {
-        // $('.page-wrap').html('<div class="loading"></div>')
-        this.loadCart();
-    },
-    loadCart: function () {
-        var _this = this;
-        _cart.getCartList(function (res) {
-            _this.renderCart(res);
-        }, function (err) {
-            _mm.showCartError();
-        })
-    },
-    renderCart: function (data) {
-        this.filter(data);
-        this.data.cartInfo = data;
-        var carthtml = _mm.renderHtml(templete, data);
-        $('.page-wrap').html(carthtml);
-    },
-    //数据匹配
-    filter: function (data) {
-        //    缓存购物车信息
+    // 数据匹配
+    filter : function(data){
         data.notEmpty = !!data.cartProductVoList.length;
     },
     // 显示错误信息
     showCartError: function(){
         $('.page-wrap').html('<p class="err-tip">哪里不对了，刷新下试试吧。</p>');
     }
-
 };
-
-$(function () {
+$(function(){
     page.init();
-});
-
+})

@@ -76,6 +76,7 @@
 .crumb{
     background: #ddd;
     border-top: 2px solid #c60023;
+    margin-bottom: 20px;
 }
 
 .crumb .crumb-body{

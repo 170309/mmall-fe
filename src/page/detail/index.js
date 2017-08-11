@@ -7,7 +7,7 @@ require('page/common/nav/index.js');
 require('page/common/header/index.js');
 var _mm = require('util/mm.js');
 var _produce = require('service/product-service.js');
-
+var _cart = require('service/cart-service.js');
 var templete = require('./index.string');
 
 

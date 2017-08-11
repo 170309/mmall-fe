@@ -21,6 +21,7 @@ var config = {
         'common': ['./src/page/common/index.js'],
         'index': ['./src/page/index/index.js'],
         'list': ['./src/page/list/index.js'],
+        'cart': ['./src/page/cart/index.js'],
         'result': ['./src/page/result/index.js'],
         'detail': ['./src/page/detail/index.js'],
         'user-login': ['./src/page/user-login/index.js'],
@@ -71,6 +72,7 @@ var config = {
         //
         new HtmlWebpackPligin(getHtmlConfig('index', '首页')),
         new HtmlWebpackPligin(getHtmlConfig('list', '商品列表页')),
+        new HtmlWebpackPligin(getHtmlConfig('cart', '购物车')),
         new HtmlWebpackPligin(getHtmlConfig('user-login', '用户登录')),
         new HtmlWebpackPligin(getHtmlConfig('detail', '商品详情页')),
         new HtmlWebpackPligin(getHtmlConfig('result', '结果显示')),
